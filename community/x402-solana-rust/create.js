@@ -53,13 +53,13 @@ const isInTemplateDir = path.resolve(templateDir) === path.resolve(targetDir)
 if (!isInTemplateDir) {
   // Check for conflicting files that would be overwritten
   const conflictingFiles = ['Cargo.toml', 'src', 'frontend', '.env']
-  const conflicts = conflictingFiles.filter(file => fs.existsSync(path.join(targetDir, file)))
+  const conflicts = conflictingFiles.filter((file) => fs.existsSync(path.join(targetDir, file)))
 
   if (conflicts.length > 0) {
     console.error(
       `${colors.red}[ERROR]${colors.reset} The following files/directories already exist and would be overwritten:\n`,
     )
-    conflicts.forEach(file => console.error(`  - ${file}`))
+    conflicts.forEach((file) => console.error(`  - ${file}`))
     console.error(`\nPlease remove them or run this in a clean directory.\n`)
     process.exit(1)
   }
